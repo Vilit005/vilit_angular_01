@@ -1,0 +1,37 @@
+[
+    {
+        "roleId":"0",
+        "username":"admin",
+        "password":"admin"
+    },
+    {
+        "roleId":"1",
+        "username":"aaaaa",
+        "password":"123456"
+    },
+    {
+        "roleId":"1",
+        "username":"bbbbb",
+        "password":"124563"
+    },
+    {   "roleId":"1",
+        "username":"ccccc",
+        "password":"654321"
+    },
+    {
+        "roleId":"1",
+        "username":"ddddd",
+        "password":"645321"
+    },
+    {
+        "roleId":"1",
+        "username":"eeeee",
+        "password":"432156"
+    },
+    {
+        "roleId":"1",
+        "username":"fffff",
+        "password":"452631"
+    }
+
+]

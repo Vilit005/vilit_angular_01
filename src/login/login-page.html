@@ -1,0 +1,30 @@
+<!-- <h1>Login</h1>
+    ng-bind把应用程序数据绑定到html 
+<div data-ng-bind="$ctrl.loginTitle"></div>
+
+<div class="row">
+    <form class="form-control">
+        <div class="form-group"></div>
+        <label class="col-md-6">{{'USER_NAME' | translate}}</label>
+        <input class="col-md-6" name="username" type="text">
+        <label class="col-md-6">Password</label>
+        <input class="col-md-6" name="password" type="password">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary" translate="LOGIN"></button>
+        </div>
+    </form>
+</div> -->
+
+<div class="container">
+    <form class="form-signin" role="form" name="loginForm" novalidate>
+        <h1 class="form-signin-heading" data-ng-bind="$ctrl.loginTitle"></h1>
+        <!-- data-translate=XXX 等价 {{'USER_NAME' | translate}} -->
+        <label class="col-md-6" data-translate="USERNAME" />
+        <input type="text" class="form-control" placeholder="username" data-ng-model="$ctrl.un" ng-minlength="4" required autofocus>
+
+        <label class="col-md-6" data-translate="PASSWORD" />
+        <input type="password" class="form-control" placeholder="password" data-ng-model="$ctrl.pw" required autofocus>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" data-translate="LOGIN" data-ng-click="$ctrl.HandleLogin()" ng-disabled="loginForm.$invalid"></button>
+    </form>
+</div>
