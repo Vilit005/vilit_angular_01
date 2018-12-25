@@ -1,49 +1,45 @@
-<!-- <h1>Login</h1>
-    ng-bind把应用程序数据绑定到html 
-<div data-ng-bind="$ctrl.loginTitle"></div>
-
-<div class="row">
-    <form class="form-control">
-        <div class="form-group"></div>
-        <label class="col-md-6">{{'USER_NAME' | translate}}</label>
-        <input class="col-md-6" name="username" type="text">
-        <label class="col-md-6">Password</label>
-        <input class="col-md-6" name="password" type="password">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-primary" translate="LOGIN"></button>
-        </div>
-    </form>
-</div> -->
-
-<div class="container">
-    <form class="form-signin" role="form">
-        <h1 class="form-signin-heading" data-ng-bind="$ctrl.loginTitle"></h1>
-        <!-- data-translate=XXX 等价 {{'USER_NAME' | translate}} -->
-        <label class="col-md-6" data-translate="USER_NAME" />
-        <input type="text" class="form-control" placeholder="username" ng-model="username" required autofocus>
-
-        <label class="col-md-6" data-translate="Password" />
-        <input type="password" class="form-control" placeholder="password" required autofocus>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit" translate="user" data-ng-click="$ctrl.userHandle()"></button>
-    </form>
+<!-- 
     <div>
-        <p>您输入的用户名是：{{username}}</p>
+        <p>当前用户是：{{username}}</p>
     </div>
     <div class="row">
         <div id="divUserList" class="col-sm-10 userList">
-            <!-- <div data-ng-repeat="user in $ctrl.users">
+            <div data-ng-repeat="user in $ctrl.users">
             <p class="pUser" data-ng-bind="user.name"></p>
             <p class="pUser" data-ng-bind="user.location"></p>
             <p class="pUser" data-ng-bind="user.age"></p>
           </div>
-          <div data-ng-bind="$ctrl.users.length"></div> -->
+          <div data-ng-bind="$ctrl.users.length"></div>
             <p>------假数据是：------</p>
             <div data-ng-repeat="user in $ctrl.users">
                 <p data-ng-bind="user.FIRST_NAME"></p>
                 <p data-ng-bind="user.LAST_NAME"></p>
             </div>
-            <!-- <p class="pUser" data-translate="ERROR_500"></p> -->
+            <p class="pUser" data-translate="ERROR_500"></p>
         </div>
     </div>
-</div>
+</div> -->
+
+<div class="container">
+    <h5 data-ng-bind="$ctrl.currentUserType"></h5>
+    <table class="table table-hover user-table">
+      <thead>
+        <tr>
+          <th>RoleId</th>
+          <th>UserName</th>
+          <th>option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-repeat="user in $ctrl.users">
+          <td data-ng-bind="user.username"></td>
+          <td data-ng-bind="user.password"></td>
+          <td><button class="btn btn-primary" data-ng-click="$ctrl.filterUserName()" data-ng-bind="$ctrl.option"></button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <input type="text" class="filter-ipt" name="username" data-ng-model="$ctrl.nameFilter" />
+      <button class="btn btn-primary filter-btn" data-ng-click="$ctrl.filterUserName()">Filter</button>
+    </div>
+  </div>

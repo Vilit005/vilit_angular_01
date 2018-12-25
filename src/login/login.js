@@ -1,5 +1,4 @@
 import Mdle from '../common/mdle';
-// import user from './user/user';
 import loginPage from './login-page';
 import loginService from '../provider/service-login';
 
@@ -9,7 +8,7 @@ mdle.registService(loginService);
 // mdle.registComponent(userPage);
 
 // mdle.setRoutes({
-//   '/user/:username': user.route,
+//   '/user/:roleId': user.route,
 //   // '/Book/:bookId/ch/:chapterId': chapter.route
 // });
 

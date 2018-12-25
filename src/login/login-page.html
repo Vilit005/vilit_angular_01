@@ -17,7 +17,7 @@
 
 <div class="container">
     <form class="form-signin" role="form" name="loginForm" novalidate>
-        <h1 class="form-signin-heading" data-ng-bind="$ctrl.loginTitle"></h1>
+        <h3 class="form-signin-heading login-title" data-ng-bind="$ctrl.loginTitle"></h3>
         <!-- data-translate=XXX 等价 {{'USER_NAME' | translate}} -->
         <label class="col-md-6" data-translate="USERNAME" />
         <input type="text" class="form-control" placeholder="username" data-ng-model="$ctrl.un" ng-minlength="4" required autofocus>
@@ -25,6 +25,10 @@
         <label class="col-md-6" data-translate="PASSWORD" />
         <input type="password" class="form-control" placeholder="password" data-ng-model="$ctrl.pw" required autofocus>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit" data-translate="LOGIN" data-ng-click="$ctrl.HandleLogin()" ng-disabled="loginForm.$invalid"></button>
+        <!-- <a class="btn btn-lg btn-primary btn-block login-btn" data-ng-href="#/user/{{user.roleId}}" ng-disabled="loginForm.$invalid">登录</a> -->
+        <button class="btn btn-lg btn-primary btn-block login-btn" type="submit" data-translate="LOGIN" data-ng-click="$ctrl.HandleLogin()" ng-disabled="loginForm.$invalid"></button>
     </form>
 </div>
+
+
+

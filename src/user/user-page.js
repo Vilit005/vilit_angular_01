@@ -4,22 +4,38 @@ import { log } from "../common/util";
 
 const name = 'userPage';  // 引用该组件的方式：<login-page></login-page>
 const bindings = {};
-const controller = function(userService) {
+const controller = function(loginService,filterFilter) {
   'ngInject';
-  this.userTitle = 'I am user.......';
-  this.users = [];
+  // log(location.search.substr(4));
+  let roleId = location.search.substr(4);
+  // this.currentUserType = "current user is : " + (roleId == 0 ? "admin" : "staff");
+  // this.option = "none";
+
+  if(roleId == 0){
+    this.currentUserType = "current user is : admin.";
+    this.option = "delete";
+  }else{
+    this.currentUserType = "current user is : staff.";
+    this.option = "none";
+  }
   
-  userService.fetch().then(resp=>{
-    log(this);
+  this.nameFilter = "";
+  this.users = [];
+  this.allUsers = [];
+
+  loginService.fetch().then(resp=>{
+    // log(this);
     this.users = resp.data;
-    log(this.users);
+    this.allUsers = resp.data;
+    // log(this.users);
   }).catch((err)=>{
-    log(this);
+    // log(this);
     this.users = err.data;
-    log(this.users)
+    // log(this.users)
   })
 
-  this.userHandle = function(){
+  this.filterUserName = function(){
+    this.users = filterFilter(this.allUsers,this.nameFilter);//参数：数据源,筛选条件
   };
 
 };
