@@ -4,30 +4,31 @@ import { log } from "../common/util";
 
 const name = 'userPage';  // 引用该组件的方式：<login-page></login-page>
 const bindings = {};
-const controller = function(loginService,filterFilter) {
+const controller = function(userService,filterFilter) {
   'ngInject';
   // log(location.search.substr(4));
-  let roleId = location.search.substr(4);
-  // this.currentUserType = "current user is : " + (roleId == 0 ? "admin" : "staff");
+  let id = location.search.substr(4);
+  // this.currentUserType = "current user is : " + (id == 1 ? "admin" : "staff");
   // this.option = "none";
-
-  if(roleId == 0){
-    this.currentUserType = "current user is : admin.";
-    this.option = "delete";
-  }else{
-    this.currentUserType = "current user is : staff.";
-    this.option = "none";
-  }
   
   this.nameFilter = "";
   this.users = [];
   this.allUsers = [];
-
-  loginService.fetch().then(resp=>{
+  
+  userService.fetch().then(resp=>{
     // log(this);
     this.users = resp.data;
-    this.allUsers = resp.data;
     // log(this.users);
+    this.allUsers = resp.data;
+    var loginUser = (this.users).find(user => user.id == id );
+    
+    if(loginUser.role == 0){//目前有三种role admin的role为0
+      this.currentUserType = "current user is : admin.";
+      this.option = "delete";
+    }else{
+      this.currentUserType = "current user is : staff.";
+      this.option = "none";
+    }
   }).catch((err)=>{
     // log(this);
     this.users = err.data;

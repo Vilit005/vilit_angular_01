@@ -1,6 +1,6 @@
 import template from './login-page.html';
 import './login-page.pcss';
-import { log } from "../common/util";
+// import { log } from "../common/util";
 // import user from '../user/user';
 
 const name = 'loginPage';  // 引用该组件的方式：<login-page></login-page>
@@ -20,7 +20,7 @@ const controller = function (loginService) {
   loginService.fetch().then(resp => {
     // log(this);
     this.users = resp.data;
-    log(this.users);
+    // log(this.users);
   })
   // .catch((err) => {
   //   log(this);
@@ -35,14 +35,17 @@ const controller = function (loginService) {
     var flag = false;//登录成功的标识
     this.users.forEach(user => {
       if(user.username == this.un && user.password == this.pw){
-        log(user.roleId == 0 ? "login success,you are the admin!" : "login success,this is a staff account!");
+        // log(user.roleId == 0 ? "login success,you are the admin!" : "login success,this is a staff account!");
         flag = true;
-        location.href = "/pages/user/index.html?id=" + user.roleId;
+        location.href = "/pages/user/index.html?id=" + user.id;
         // this.$location.path("/user?id=" + user.roleId);
         //http://localhost:8000/pages/login/#!/user%3Fid=0
       }
     });
-    if(!flag) log("error username or password.");
+    if(!flag) {
+      // log("error username or password.");
+      alert("error username or password!");
+    }
   }
 
 };
