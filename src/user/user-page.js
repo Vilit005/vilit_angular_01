@@ -26,9 +26,11 @@ const controller = function(userService,filterFilter){
     if(loginUser.role == 0){//目前有三种role admin的role为0
       this.currentUserType = "current user is : admin.";
       this.option = "delete";
+      this.editBtnVisible = true;
     }else{
       this.currentUserType = "current user is : staff.";
-      this.option = "none";
+      // this.option = "none";
+      this.editBtnVisible = false;
     }
   }).catch((err)=>{
     // log(this);

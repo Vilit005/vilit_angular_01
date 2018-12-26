@@ -27,14 +27,14 @@
         <tr>
           <th>RoleId</th>
           <th>UserName</th>
-          <th>option</th>
+          <th data-ng-show="$ctrl.editBtnVisible">option</th>
         </tr>
       </thead>
       <tbody>
         <tr data-ng-repeat="user in $ctrl.users">
           <td data-ng-bind="user.username"></td>
           <td data-ng-bind="user.password"></td>
-          <td><button data-ng-click="" data-ng-bind="$ctrl.option"></button></td>
+          <td><button data-ng-click="" data-ng-bind="$ctrl.option" data-ng-show="$ctrl.editBtnVisible"></button></td>
         </tr>
       </tbody>
     </table>
