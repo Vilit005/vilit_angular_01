@@ -1,10 +1,10 @@
 import template from './user-page.html';
 import './user-page.pcss';
-import { log } from "../common/util";
+// import { log } from "../common/util";
 
 const name = 'userPage';  // 引用该组件的方式：<login-page></login-page>
 const bindings = {};
-const controller = function(userService,filterFilter) {
+const controller = function(userService,filterFilter){
   'ngInject';
   // log(location.search.substr(4));
   let id = location.search.substr(4);
@@ -14,7 +14,8 @@ const controller = function(userService,filterFilter) {
   this.nameFilter = "";
   this.users = [];
   this.allUsers = [];
-  
+  this.visible=true;
+
   userService.fetch().then(resp=>{
     // log(this);
     this.users = resp.data;
@@ -35,9 +36,15 @@ const controller = function(userService,filterFilter) {
     // log(this.users)
   })
 
-  this.filterUserName = function(){
+  this.filterUserName =function(){
     this.users = filterFilter(this.allUsers,this.nameFilter);//参数：数据源,筛选条件
+    this.visible=!(this.visible);
   };
+
+  this.backUsers = function(){
+    this.users = this.allUsers;
+    this.visible=!(this.visible);
+  }
 
 };
 

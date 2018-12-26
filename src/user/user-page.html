@@ -34,12 +34,14 @@
         <tr data-ng-repeat="user in $ctrl.users">
           <td data-ng-bind="user.username"></td>
           <td data-ng-bind="user.password"></td>
-          <td><button class="btn btn-primary" data-ng-click="$ctrl.filterUserName()" data-ng-bind="$ctrl.option"></button></td>
+          <td><button data-ng-click="" data-ng-bind="$ctrl.option"></button></td>
         </tr>
       </tbody>
     </table>
     <div>
       <input type="text" class="filter-ipt" name="username" data-ng-model="$ctrl.nameFilter" />
-      <button class="btn btn-primary filter-btn" data-ng-click="$ctrl.filterUserName()">Filter</button>
+      <button class=" filter-btn" data-ng-click="$ctrl.filterUserName()" data-ng-show="$ctrl.visible">FilterUserName</button>
+      <button class=" back-btn" data-ng-click="$ctrl.backUsers()" data-ng-hide="$ctrl.visible">back to list</button>
     </div>
   </div>
+  <!--button:class="btn btn-primary" -->
