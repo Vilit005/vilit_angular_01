@@ -39,12 +39,17 @@ const controller = function(userService,filterFilter){
   })
 
   this.filterUserName =function(){
-    this.users = filterFilter(this.allUsers,this.nameFilter);//参数：数据源,筛选条件
-    this.visible=!(this.visible);
+    if(this.nameFilter.replace(/(^s*)|(s*$)/g, "").length != 0){
+      this.users = filterFilter(this.allUsers,this.nameFilter);//参数：数据源,筛选条件
+      this.visible=!(this.visible);
+    }else{
+      alert("Filter conditions cannot be empty!");
+    }
   };
 
   this.backUsers = function(){
     this.users = this.allUsers;
+    this.nameFilter = "";
     this.visible=!(this.visible);
   }
 
