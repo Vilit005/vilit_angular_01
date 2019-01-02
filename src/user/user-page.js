@@ -7,7 +7,8 @@ const bindings = {};
 const controller = function(userService,filterFilter){
   'ngInject';
   // log(location.search.substr(4));
-  let id = location.search.substr(4);
+  // let id = location.search.substr(4);
+  let id = sessionStorage.getItem("id");
   // this.currentUserType = "current user is : " + (id == 1 ? "admin" : "staff");
   // this.option = "none";
   
